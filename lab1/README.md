@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 LAB1_1
 	-> Neste exercicio apenas foi instalado o maven, logo apenas segui as indicações do link indicado para ubuntu, dai a pasta do lab1_1 estar vazia
 
