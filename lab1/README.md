@@ -1,6 +1,6 @@
-<<<<<<< HEAD
+
 LAB1_1
-	-> Neste exercicio apenas foi instalado o maven, logo apenas segui as indicações do link indicado para ubuntu, dai a pasta do lab1_1 estar vazia
+	-> Neste exercicio apenas foi instalado o maven, logo apenas segui as indicações do link indicado para ubuntu, dai a pasta do lab1_1 não existir
 
 LAB1_2
 	Nota como IDE vou utilizar o VSCODE com as extensões para Java com o Maven inclusive.	
