@@ -9,7 +9,6 @@ LAB1_2
 	mvn archetype:generate -DgroupId=com.ex1_2.app -DartifactId=ex2 -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false 
 	, e com isto foi me criado um projeto maven numa subdiretoria chamada ex2 com a aplicação ex1_2 la dentro, logo alterei o groupID e o artifactId
 	
-	
 	Maven archetype->cria estruturas automaticamente já com algum código e que pode muito bem ser reutilizado, ou seja, permite poupar muito tempo ao utilizador, fazendo com que muito trabalho seja gerado logo automaticamente
 
 	GroupId é o que serve para identificar o projeto entre todos os projetos que existem, deve ir ao encontro da nomenclutura tipica das packages do java ou seja em reversed domain ,ou seja, do nó para a raiz, org.apache.commons.
