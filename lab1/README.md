@@ -19,7 +19,7 @@
 	java -cp target/ex2-1.0-SNAPSHOT.jar com.ex1_2.app.App -> para correr o projeto
 	Resultado do tutorial maven in 5 minutes: Hello World 
    
-   Notas do Maven in 5 minutes:
+        Notas do Maven in 5 minutes:
 	
 	Maven archetype->cria estruturas automaticamente já com algum código e que pode muito bem ser reutilizado, ou seja, permite poupar muito tempo ao utilizador, fazendo com que muito trabalho seja gerado logo automaticamente
 
