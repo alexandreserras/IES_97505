@@ -52,7 +52,45 @@
 	     No final de tudo, chega um dataUpdate com dia,data e hora de quando foi recebio a data, o país , globalIdLocal e o owner
 	     O resultado pode ser visto no ficheiro alineaD_output.
 	Alinea e)
-		
+		Com o VSCode, clicando com o botão do lado direto do rato em cima de uma pasta, aparece a opção criar um projeto Maven, onde 
+		escolhi o tipo quickstart e coloquei como groupId->com.MyWeatherRadar , com artifactId -> MyWeatherRadar e com versão 1.0-SNAPSHOT
+		e o projeto MyWeatherRadar foi então criado .
+	Alinea f)
+		O POM que é um ficheiro em XML,onde tem os dados da versão do xml e o encoding que utiliza, logo na primeira linha.
+		Depois todo o código xml exceto essa linha inical esta dentro de um elemento que é um project e dentro desse project vamos tendo vários subgrupos,
+	primeiro aparece o groupId,artifactId,version, mais o name  e o url.
+		<groupId>com.MyWeatherRadar.app</groupId>
+		<artifactId>MyWeatherRadar</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<name>MyWeatherRadar</name>
+		<url>http://www.example.com</url>
+		Após isto temos um elemento property, que possui várias propertys dentro dele: encoding, compiler source e compiler target.
+		  <properties>
+		    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		    <maven.compiler.source>1.7</maven.compiler.source>
+		    <maven.compiler.target>1.7</maven.compiler.target>
+		  </properties>
+		De seguida aparece as dependencies , que contem dependency e que dentro desta estão várias informações.
+		<dependencies>
+		    <dependency>
+		      <groupId>junit</groupId>
+		      <artifactId>junit</artifactId>
+		      <version>4.11</version>
+		      <scope>test</scope>
+		    </dependency>
+		 </dependencies>
+		E por último grande grupo temos o build, que dentro dele tem imensos elementos 
+		 <build>
+		    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+		      <plugins>
+			<!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+			<plugin>
+			</plugin> 
+		      </plugins>
+		    </pluginManagement>
+		 </build>
+	
+
 	
 	
 
