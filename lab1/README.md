@@ -89,8 +89,28 @@
 		      </plugins>
 		    </pluginManagement>
 		 </build>
-	
+		 
+	Alinea G)
+		Coloquei as 2 linhas de comando dadas no enunciado,para as versões de dependência do Java, a codificação de encoding ficou aquela que ja se encontrava, e adicionei um novo elemento developers, onde fui coloquei os dados relativos a: quem criou a app, user name, email, url, organização e mail da organização, através da ajuda da informação apresentada neste link https://books.sonatype.com/mvnex-book/reference/customizing-sect-customizing-project-info.html
+		<developers>
+			<developer>
+			    <id>serras</id>
+			    <name>Alexandre Serras</name>
+			    <email>alexandreserras@ua.pt</email>
+			    <url>http://www.sonatype.com</url>
+			    <organization>universidade Aveiro</organization>
+			    <organizationUrl>https://www.ua.pt/</organizationUrl>
+			    <roles>
+				<role>developer</role>
+			    </roles>
+			    <timezone>-6</timezone>
+			</developer>
+		</developers>
 
-	
+	Alinea H)
+		A aplicação pretendida precisa de abrir uma ligação HTTP, criar um pedido GET, obter o JSON com a
+		resposta, processar o conteúdo da resposta para usar o resultado. 
+		Há vários passos envolvidos, que podem ser grandemente simplificados recorrendo a bibliotecas externas. O uso dessas bibliotecas (ou
+		artifacts) dá origem a dependências e o maven facilita a sua gestão.
 	
 
