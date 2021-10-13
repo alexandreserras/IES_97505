@@ -1,0 +1,63 @@
+{
+   "dataUpdate" : "2021-10-13T13:31:04",
+   "owner" : "IPMA",
+   "data" : [
+      {
+         "classWindSpeed" : 1,
+         "precipitaProb" : "0.0",
+         "tMin" : "15.7",
+         "tMax" : "26.8",
+         "latitude" : "40.6413",
+         "longitude" : "-8.6535",
+         "idWeatherType" : 1,
+         "forecastDate" : "2021-10-13",
+         "predWindDir" : "E"
+      },
+      {
+         "predWindDir" : "SE",
+         "forecastDate" : "2021-10-14",
+         "idWeatherType" : 5,
+         "latitude" : "40.6413",
+         "longitude" : "-8.6535",
+         "tMax" : "26.7",
+         "precipitaProb" : "0.0",
+         "tMin" : "12.9",
+         "classWindSpeed" : 1
+      },
+      {
+         "latitude" : "40.6413",
+         "longitude" : "-8.6535",
+         "forecastDate" : "2021-10-15",
+         "idWeatherType" : 3,
+         "predWindDir" : "NW",
+         "precipitaProb" : "0.0",
+         "tMin" : "10.7",
+         "classWindSpeed" : 1,
+         "tMax" : "21.6"
+      },
+      {
+         "forecastDate" : "2021-10-16",
+         "idWeatherType" : 3,
+         "predWindDir" : "NW",
+         "latitude" : "40.6413",
+         "longitude" : "-8.6535",
+         "tMax" : "22.2",
+         "precipitaProb" : "6.0",
+         "tMin" : "12.4",
+         "classWindSpeed" : 1
+      },
+      {
+         "classWindSpeed" : 2,
+         "tMin" : "15.1",
+         "precipitaProb" : "54.0",
+         "tMax" : "22.6",
+         "longitude" : "-8.6535",
+         "latitude" : "40.6413",
+         "forecastDate" : "2021-10-17",
+         "idWeatherType" : 3,
+         "predWindDir" : "SW"
+      }
+   ],
+   "country" : "PT",
+   "globalIdLocal" : 1010500
+}
