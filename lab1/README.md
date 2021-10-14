@@ -113,4 +113,25 @@
 		Há vários passos envolvidos, que podem ser grandemente simplificados recorrendo a bibliotecas externas. O uso dessas bibliotecas (ou
 		artifacts) dá origem a dependências e o maven facilita a sua gestão.
 	
+	 mvn exec:java -Dexec.mainClass="com.MyWeatherRadar.WeatherStarter" -Dexec.cleanupDaemonThreads=false
+	 comando para correr
+
+	Res: Quando se pesquisa sem argumentos por default fica Aveiro
+		mvn exec:java -Dexec.mainClass="com.MyWeatherRadar.WeatherStarter"  -Dexec.cleanupDaemonThreads=false 
+		out 14, 2021 6:44:31 DA TARDE com.MyWeatherRadar.WeatherStarter main
+		INFO: Temperatura máxima em Aveiro é de : 25.9
+
+
+		 mvn exec:java -Dexec.mainClass="com.MyWeatherRadar.WeatherStarter" -Dexec.args="Viseu Aveiro China Santarém" 
+		out 14, 2021 6:43:32 DA TARDE com.MyWeatherRadar.WeatherStarter main
+		INFO: Temperatura máxima em Viseu é de : 23.2
+		out 14, 2021 6:43:32 DA TARDE com.MyWeatherRadar.WeatherStarter main
+		INFO: Temperatura máxima em Aveiro é de : 25.9
+		out 14, 2021 6:43:32 DA TARDE com.MyWeatherRadar.WeatherStarter main
+		INFO: China não existe na base de dados 
+		out 14, 2021 6:43:32 DA TARDE com.MyWeatherRadar.WeatherStarter main
+		INFO: Temperatura máxima em Santarém é de : 28.7
+
+		
+
 

@@ -13,4 +13,10 @@ public interface IpmaService {
     @GET("forecast/meteorology/cities/daily/{city_id}.json")
     Call<IpmaCityForecast> getForecastForACity(@Path("city_id") int cityId);
 
+    @GET("distrits-islands.json")
+    Call<IpmaCityForecast> getCidadeByName();
+
+    /*
+        não tem nenhum argumento aqui
+    */
 }

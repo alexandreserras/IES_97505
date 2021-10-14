@@ -6,7 +6,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import weather.ipma_client.IpmaCityForecast;
 import weather.ipma_client.IpmaService;
-
+import java.util.*;
 import java.util.logging.Logger;
 
 /**
@@ -20,16 +20,20 @@ public class WeatherStarter {
     https://rules.sonarsource.com/java/tag/bad-practice/RSPEC-106
      */
     private static final Logger logger = Logger.getLogger(WeatherStarter.class.getName());
+    private static Call<CityForecast> cidadeByName;
 
     public static void  main(String[] args ) {
-        String []cidade = {};
+        ArrayList<String> cidade = new ArrayList<>();
         String def="Aveiro";
         if (args.length != 0 ){
-            cidade=args[0].split(" ");
+            for (String a: args){
+                cidade.add(a);
+            }
         }
         else{
-            cidade[0]=def;
+            cidade.add("Aveiro");
         }
+        System.out.println(cidade);
         /*
         get a retrofit instance, loaded with the GSon lib to convert JSON into objects
          */
@@ -39,24 +43,35 @@ public class WeatherStarter {
                 .build();
 
         IpmaService service = retrofit.create(IpmaService.class);
-        Call<IpmaCityForecast> callSync = service.getForecastForACity(CITY_ID_AVEIRO);
-
+        Call<IpmaCityForecast>  cidadeByName = service.getCidadeByName();
         try {
-            Response<IpmaCityForecast> apiResponse = callSync.execute();
-            IpmaCityForecast forecast = apiResponse.body();
-          
-            if (forecast != null) {
-                for (String a: cidade){
-                    logger.info( "Temperatura máxima em "+a+  " é de : " + forecast.getData().
+            Response<IpmaCityForecast> data = cidadeByName.execute();
+            List<CityForecast> res= data.body().getData();
+            
+         //tenho a lista completa
+        for (String local: cidade){
+            boolean control=false;
+                for (CityForecast a: res){
+                    if (local.equals(a.getLocal())){
+                        control=true;
+                        Call<IpmaCityForecast> callSync = service.getForecastForACity(a.getGlobalIdLocal());
+                        Response<IpmaCityForecast> apiResponse = callSync.execute();
+                        IpmaCityForecast forecast = apiResponse.body();
+                        logger.info( "Temperatura máxima em "+a.getLocal()+  " é de : " + forecast.getData().
                         listIterator().next().getTMax());
+                    }
                 }
-                
-            } else {
-                logger.info( "No results!");
+            if( ! control){
+                control=true;
+                logger.info(local +" não existe na base de dados " );
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
+
+            }
         }
+        catch (Exception ex) {
+            ex.printStackTrace();
+    }
+       
 
     }
 }

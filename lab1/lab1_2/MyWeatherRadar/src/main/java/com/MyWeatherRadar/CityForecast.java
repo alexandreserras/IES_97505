@@ -35,6 +35,15 @@ public class CityForecast {
     @SerializedName("latitude")
     @Expose
     private String latitude;
+    @SerializedName("globalIdLocal")
+    @Expose
+    private Integer globalIdLocal;
+    @SerializedName("dataUpdate")
+    @Expose
+    private String dataUpdate;
+    @SerializedName("local")
+    @Expose
+    private String local;
 
     public String getPrecipitaProb() {
         return precipitaProb;
@@ -91,6 +100,13 @@ public class CityForecast {
     public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
+    public String getLocal() {
+        return local;
+    }
+
+    public void setLocal(String longitude) {
+        this.local = longitude;
+    }
 
     public String getForecastDate() {
         return forecastDate;
@@ -99,6 +115,7 @@ public class CityForecast {
     public void setForecastDate(String forecastDate) {
         this.forecastDate = forecastDate;
     }
+    
 
     public String getLatitude() {
         return latitude;
@@ -107,4 +124,18 @@ public class CityForecast {
     public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
+    public Integer getGlobalIdLocal() {
+        return globalIdLocal;
+    }
+
+    public void setGlobalIdLocal(Integer globalIdLocal) {
+        this.globalIdLocal = globalIdLocal;
+    }
+
+    @Override
+    public String toString() {
+        return 
+            " GlobalId='" + getGlobalIdLocal() + "  em " +this.local;   
+    }
+
 }
