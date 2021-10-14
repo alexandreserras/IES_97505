@@ -112,7 +112,45 @@
 		resposta, processar o conteúdo da resposta para usar o resultado. 
 		Há vários passos envolvidos, que podem ser grandemente simplificados recorrendo a bibliotecas externas. O uso dessas bibliotecas (ou
 		artifacts) dá origem a dependências e o maven facilita a sua gestão.
-	
+		Vamos usar o gson e o retrofit como essas bibliotecas externas
+
+		Retrofit retrofit = new Retrofit.Builder()
+			.baseUrl("https://api.github.com/")
+			.build();
+		@GET("users/{user}/repos")
+  		Call<IpmaCityForecast>  cidadeByName = service.getCidadeByName();
+		Response<IpmaCityForecast> data = cidadeByName.execute();
+		.body() vai buscar a informação que veio com a mensagem 
+		.getData()-> Passa toda a informação que vem no campo Data da mensagem.
+
+		"Gson is a Java library that can be used to convert Java Objects into their JSON representation."
+		e assim com isto, vamos buscar a informação que esta na pagina do github, naquela pasta, para o user que é passado como argumento.
+		Para ser compativel com o  programa é necessário atualizar o pom.xml no lugar das depêndencias
+
+	Aline I)
+		Ter uma noção do gráfico de depêndencias
+	Alinea J)
+		https://gist.github.com/icoPT/8b378e03244d07e11645a97fa1857d7c -> classe main / WeatherStart
+		https://gist.github.com/icoPT/a8cf15730bb201a76b228ef3cace5908 -> outras classes
+		
+		Estas classes vão ser colocadas em  MyWeatherRadar/src/main/java/com/MyWeather
+
+		mvn exec:java -Dexec.mainClass="com.MyWeatherRadar.WeatherStarter"  -Dexec.cleanupDaemonThreads=false 
+		out 14, 2021 6:44:31 DA TARDE com.MyWeatherRadar.WeatherStarter main
+		INFO: Temperatura máxima em Aveiro é de : 25.9
+
+		e acertando as packages e correndo o resultado é aquele que é obtido
+
+		"Clears the target directory and Builds the project and packages the resulting JAR file into the target directory."->mvn clean package  
+		"Clears the target directory into which Maven normally builds your project." -> mvn clean
+		no maven o -D é sempre muito importante, switch is used to define/pass a property to Maven in CLI. 
+		Podemos utilizar vários -Dexec.algo 
+			
+
+	Alinea k)
+		Tive que fazer alterações na classe WeatherStarter, CityForecast,IpmaService (tive que adicionar 1 serviço), para descobrir estes valores tive que utilizar dos dados json o globalID e o nome do local.
+		Nome do local é utilizado para ver todos os nomes, e caso um deles seja igual ao input do user , uso isso para ir buscar o globalID desse local e tendo o global id sei toda a informação sobre esse local.
+	para assim ser possivel que todas as localidades que estão no json podem ser passadas para o programa e assim indica qual vai ser a temperatura máxima para a zona pretendida.
 	 mvn exec:java -Dexec.mainClass="com.MyWeatherRadar.WeatherStarter" -Dexec.cleanupDaemonThreads=false
 	 comando para correr
 
@@ -132,6 +170,6 @@
 		out 14, 2021 6:43:32 DA TARDE com.MyWeatherRadar.WeatherStarter main
 		INFO: Temperatura máxima em Santarém é de : 28.7
 
-		
+
 
 
