@@ -171,5 +171,18 @@
 		INFO: Temperatura máxima em Santarém é de : 28.7
 
 
+## LAB1_3
+	(Duvida quanto ao que é pedido no 1.2)
+	https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud -> tutorial
+	Com o BitBucket é um bocadinho como utilizar o GITHUB no site, e por uma questão de ser mais familiar o github
+	prefiro utilizar antes este do que o BitBucket.
+
+	Ficheiro ".gitignore -> "Note that .gitignore provides patterns for files or folders to exclude, from the directory in which it is include.  You may create .ignore in multiple folders, but is usual  to do it in the root of a project. If you have a repository with several project subfolders, you may choose to propagate certain rules from root into the sub-folders, in the exclusion list."
+	
+
+	ALinea b)
+		Para colocar os ficheiros no Github posso abrir o repositorio e dar clone e depois só colocar lá ou criar o repositorio localmente e depois passar o git esse repositório
+		Vou fazer um pequena simulação dos comandos que preciso apesar de já ter, tudo no github nesta altura do guião visto que criei o repositório logo no inicio do lab
+
 
 
