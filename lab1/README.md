@@ -204,6 +204,8 @@
 	Alinea d)
 		$git clone git@github.com:alexandreserras/IES_97505.git 
 	e assim fico com o repositório para poder trabalhar no local2, o link apresentado vem com SSH, o que simplifica bastante o facto de assim não ser preciso estar sempre a colocar  os dados
+		
+		Tenho de fazer outro diretorio ? é isso que é pedido???
 
 	Alinea e)
 
@@ -211,10 +213,67 @@
 
 
 ## LAB1_4
-
+	Utilizar containers facilita bastante a nossa vida e resolve muito os problemas de versões , com isto resolve-se aquele problema de um dado trabalho correr numa maquina e em outra não. Devido ao uso de docker vai correr na mesma forma em todas
+	Vantagens de usar docker -> Facilidade de configurar,produtividade do desenvolvimento, isolar a app, server consolidado,
+	capacidade de debbug e o rapido desenvolvimento
 	Alinea a)
+		 https://docs.docker.com/engine/install/ubuntu/ -> tutorial que segui
+		5:18.09.0~3-0~ubuntu-bionic -> opção escolhida no passo 2 de instalar o docker engine
+
+		Para não ter de estar sempre a fazer sudo segui o tutorial abaixo
+		https://docs.docker.com/engine/install/linux-postinstall/
 	Alinea b)
+	https://docs.docker.com/get-started/-> link do tutorial para começar a mexer no docker
+		Docker tutorial parte 1 -> Part 1: Getting started
+
+		 docker/docker containers --help -> Mostram a lista de todos os CLI commands que o docker tem
+
+		 docker run -d -p 80:80 docker/getting-started -> primeiro comando em docker
+		 todos os comandos -> https://docs.docker.com/engine/reference/commandline
+		  -d significa que vai correr em background
+		  -p 80:80 -a porta 80 do host vai para  a porta 80 do container
+		  docker/getting-started- > imagem que vai ser usada
+
+		  docker rm -f $(docker ps -aq) -> comando que remove todos os containers
+		  docker ps -> mostra toda a info acerca de containers que temos na nossa maquina
+		  docker container ls/docker cp -> Copia os ficheiros entre o container e o filesystem local	
+		  docker version [OPTIONS] -> da toda a info da versao  do docker que temos instalado
+		  docker info-> da mais outras info do docker 
+		  docker run [options] algo  [commands] [args]-> executa o docker image
+		  docker image ls -> mostra a lista de docker images
+
+		  docker image build	Constroi a imagem a partir de um docker file
+		  docker image history	Mostra o historico de uma imagem 
+		  docker container attach	Anexa o local standart input,output e erros a um docker a correr 
+		  docker container commit	Cria uma nova imagem a partir de uma mudança de container
+
+
+	
+		O que é um container:
+			"Container is a sandboxed process on your machine that is isolated from all other processes on the host machine.
+			Docker has worked to make these capabilities approachable and easy to use."
+		Quando estamos a correr um container ele usa um filesystem isolado , este custom filesystem é dado por um container image
+		Desde que a imagem contenha o filesystem o container's filesystem , temos tudos o que precisamos para correr a aplicação s
+
+		Parte 2-> https://docs.docker.com/get-started/02_our_app/
+
+		https://github.com/docker/getting-started/tree/master/app -> link da app
+
+		Passos:
+			1-> Criar um docker file
+			2-> docker build -t getting-started . -> Construir uma nova docker image , o . no fim indica que o Docker deve olhar para o dockerfile que esta nesta diretoria
+			3-> Correr o programa ->  docker run -dp 3000:3000 getting-started
+			4-> http://localhost:3000/ abrindo este link temos a nossa app já a funcionar
+
 	ALinea c)
+		Apesar de ser CLI por vezes da jeito uma app com interface grafica que nos ajude ,"The Portainer app is a web application that facilitates the management of Docker container"
+
+		Instalar Portainer -> https://docs.portainer.io/v/ce-2.9/start/intro
+		https://localhost:9443/ é onde ficou a app instalada
+			credenciais:
+				user:admin
+				pass:serra****
+		https://www.youtube.com/watch?v=ARuyau0_j28&ab_channel=TheTinkerDad -> video com mais info sobre portainer
 	Aline d)
 	Alinea e)
 ## LAB1_5
