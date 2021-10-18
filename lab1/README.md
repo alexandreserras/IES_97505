@@ -360,14 +360,42 @@
 ## Reniew questions
 
 	A)
+		Maven main phases no ciclo default:
+			validate - Verifica se toda a informação disponivel para o projeto está "available" e valida se o projeto esta correto 
+			compile - Compila o source code 
+			test -Testa o source code compilado  
+			package - Leva o código compilado e "package" numa forma distribuivel como por exemplo um jar 
+			verify -Corre os unit tests, para garantir que os critérios de qualidade estão todos
+			install - instala o package no repositorio local 
+			deploy - Feito no ambiente de construção , copia o package final para o repositório remoto para ser possivel partilha-lo 
+	B) DUVIDA
+		Sim, o maven pode ser util para correr o nosso projeto , como utilizamos na pergunta 1.2 para o correr ou em   uma aplicação web e pode fazer muitas outras tarefas através de plug-ins
 
-	B)
 
 	C)
+		git pull
+		(FAZER A ADIÇÃO DA FUNCIONALIDADE)
+		git add . 
+		git commit -m "Adição da funcionalidade"
+		git push
 
 	D)
+		->Em alturas que estamos a fazer debug de por exemplo 3 bugs, é melhor dar commit 1 a 1 da resolução dos bugs , porque assim vamos ficar com uma muito melhor organização
+		->A mensagem deve ser o mais especifica possivel daquilo que foi alterado/removido /adicionado
+		->Fazer commits pequenos, vai um bocado ao encontro dos bugs
+		-> Quando estamos a fazer tentativas, não devemos 
+		-> Não dar commit de trabalhos a meio, devemos acabar e só depois dar commit
+		-> Usar uma linguagem que todos os membros da equipa vão perceber, para que caso alguem pegue no trabalho perceba
+		o que foi feito
+		->Usar o "body" para explicar o que foi feito e porquê
+		-> Não dar commit diretamente no master, fazer branch primeiro, para termos segurança que se alguem da nossa equipa mexeu no trabalho não vamos estar a dar overwrite no dele.
+		-> Evitar reescrever o historico do master
+
+
 
 	E)
-
+		
+		Ao configurar volumes, como se pode ver pelos apontamentos, vamos fazer com que exista persistencia dos dados na base de dados e assim caso se apague o container , os dados vão continuar la
+		E caso exista reboot do sistema , os dados também se vão manter
 
 
