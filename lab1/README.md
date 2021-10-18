@@ -273,9 +273,87 @@
 			credenciais:
 				user:admin
 				pass:serra****
+		
+		$docker volume create portainer_data
+		$docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
 		https://www.youtube.com/watch?v=ARuyau0_j28&ab_channel=TheTinkerDad -> video com mais info sobre portainer
 	Aline d)
+		 Postgres Docker Image -> "Since the advent of Docker, I rarely find my self directly installing development software on my local machine. "
+		 "Installing software is hard. "
+		 "Docker provides a way out of this mess by reducing the task of installing and running software to as little as two commands (docker run and docker pull). In this post we will see this process in action by taking a step by step look at how easy and simple it is to setup a Postgres installation with docker."
+		 docker run --rm --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres  mas com isto vamos utilizar uma default image
+
+		 docker pull postgres [versão (opcional)]-> Vamos buscar a imagem mais recente estabalizada do postgres
+		 fonte: https://hackernoon.com/dont-install-postgres-docker-pull-postgres-bee20e200198
+
+		Em vez de utilizarmos a imagem que o postgres tem podemos nos próprios customizar a nossa própria imagem com certas adaptações 
+		 Docker build object, onde se encontra o dockerfile- >https://docs.docker.com/samples/postgresql_service/
+		Primeiro método:
+		Container build
+		  docker build -t eg_postgresql . -> construir a imagem do dockerfile e dar lhe um nome
+
+			  Problema das keys ->The command '/bin/sh -c apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8' returned a non-zero code: 2
+
+		
+		Container run
+		   docker run --rm -P --name pg_test eg_postgresql -> correr o container do postgresql server
+
+		"Note: The --rm removes the container and its image when the container exits successfully."
+		"There are two ways to connect to the PostgreSQL server. We can use Link Containers, or we can access it from our host (or the network)."
+
+
+		Segunda alternativa:
+			docker run --name pg-docker -e POSTGRES_PASSWORD=docker -e POSTGRES_DB=sampledb -e PGDATA=/tmp -d -p 5433:5432 -v ${PWD}:/var/lib/postgresql/data postgres:11 
+
+	
+		Container linking
+			 docker run --rm -t -i --link pg_test:pg eg_postgresql bash
+
+		Ligar a partir do meu host
+			docker ps -> para ver qual é o que tem a imagem com o nome:eg_postgresql
+			 psql -h localhost -p porta -d docker -U docker --password
+
+		 	 
+		Para conseguir persistencia dos dados da base de dados, teríamos de criar um volume e fazer link a esta imagem, usar docker-compose por exemplo. Também o podemos fazer recorrendo ao portainer,que o faz automaticamente. Uma outra opção para utilizar volumes será, seguindo a configuração atual da dockerfile existente, recorrer à flag -v, ao correr o container:
+
+		$docker run --rm -v pgdata:/var/lib/postgresql/9.3/main -P --name pg_test eg_postgresql
+
+		Tenho a teoria mas estou a ter um erro idk where need to ask professor
+
+
+
 	Alinea e)
+		Docker compose-> O docker compose podemos facilmente fazer build e run de muitos  containers, pelo que se todos os componentes correrem corretamente num container, conseguimos descrever toda a app como uma compose file. 
+		Instalar o Docker Compose:
+		sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		sudo chmod +x /usr/local/bin/docker-compose
+		Verificar se foi instalado:
+		docker-compose --version
+
+		Começar o docker compose-> docker-compose up
+		Começar aplicação em detached mode-> docker-compose up -d
+		Para ver todos os docker compose -> docker-compose ps
+		Ver as variaveis que estão na web-> docker-compose run web env
+		Parar tudo do compose -> docker-compose stop
+		Remover todos os containers e até a data dos volumes-> docker-compose down --volumes
+		Tutorial -> https://docs.docker.com/compose/gettingstarted/
+		http://127.0.0.1:5000
+		Notas no desenvolvimento da app:
+			Notas do que faz o dockerfile:
+				"This tells Docker to:
+					Build an image starting with the Python 3.7 image.
+					Set the working directory to /code.
+					Set environment variables used by the flask command.
+					Install gcc and other dependencies
+					Copy requirements.txt and install the Python dependencies.
+					Add metadata to the image to describe that the container is listening on port 5000
+					Copy the current directory . in the project to the workdir . in the image.
+					Set the default command for the container to flask run."
+			Docker compose.yml:
+				Define os serviços web e redis
+				"The new volumes key mounts the project directory (current directory) on the host to /code inside the container, allowing you to modify the code on the fly, without having to rebuild the image."
+				e com isto não precisamos de mandar a aplicação abaixo para estar a trabalhar nela
+
 ## LAB1_5
 	Não sei se percebi bem o exercicio
 
