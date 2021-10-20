@@ -205,11 +205,19 @@
 		$git clone git@github.com:alexandreserras/IES_97505.git 
 	e assim fico com o repositório para poder trabalhar no local2, o link apresentado vem com SSH, o que simplifica bastante o facto de assim não ser preciso estar sempre a colocar  os dados
 		
-		Tenho de fazer outro diretorio ? é isso que é pedido???
+		
 
 	Alinea e)
+			https://howtodoinjava.com/log4j2/log4j2-xml-configuration-example/
+			fonte utilizada, utilizando a opção de escrever o resultado dos loggs na consola
+			Seguindo o tutorial é muito claro aquilo que se precisa de fazer
 
 	Alinea f)
+		Basta fazer pull no repositório que estavamos a utilizar como main e fica tudo bem
+		git log --graph --oneline --decorate> lab1-2.log
+		comando que pode ser utilizado para produzir os logs num ficheiro
+
+		Ter sempre muita atenção aos commits visto que são muito importantes para se perceber o trabalho realizado e a evolução ao longo do tempo e no quê que pode ter havido trocas 
 
 
 ## LAB1_4
@@ -288,37 +296,31 @@
 
 		Em vez de utilizarmos a imagem que o postgres tem podemos nos próprios customizar a nossa própria imagem com certas adaptações 
 		 Docker build object, onde se encontra o dockerfile- >https://docs.docker.com/samples/postgresql_service/
+
+		O exercicio foi feito na diretoria post
+		
 		Primeiro método:
 		Container build
 		  docker build -t eg_postgresql . -> construir a imagem do dockerfile e dar lhe um nome
+				
+		Problema das keys ->The command '/bin/sh -c apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8' returned a non-zero code: 2
 
-			  Problema das keys ->The command '/bin/sh -c apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8' returned a non-zero code: 2
+		Logo tive que fazer o tutorial -> https://dzone.com/articles/postgresql-with-docker-quick-start
 
 		
-		Container run
-		   docker run --rm -P --name pg_test eg_postgresql -> correr o container do postgresql server
+		docker run --name pg-docker -e POSTGRES_PASSWORD=docker -e POSTGRES_DB=sampledb -e PGDATA=/tmp -d -p 5433:5432 -v ${PWD}:/var/lib/postgresql/data postgres:11 
 
-		"Note: The --rm removes the container and its image when the container exits successfully."
-		"There are two ways to connect to the PostgreSQL server. We can use Link Containers, or we can access it from our host (or the network)."
-
-
-		Segunda alternativa:
-			docker run --name pg-docker -e POSTGRES_PASSWORD=docker -e POSTGRES_DB=sampledb -e PGDATA=/tmp -d -p 5433:5432 -v ${PWD}:/var/lib/postgresql/data postgres:11 
-
-	
-		Container linking
-			 docker run --rm -t -i --link pg_test:pg eg_postgresql bash
 
 		Ligar a partir do meu host
 			docker ps -> para ver qual é o que tem a imagem com o nome:eg_postgresql
-			 psql -h localhost -p porta -d docker -U docker --password
+			psql -h localhost -p porta -d docker -U docker --password
 
 		 	 
 		Para conseguir persistencia dos dados da base de dados, teríamos de criar um volume e fazer link a esta imagem, usar docker-compose por exemplo. Também o podemos fazer recorrendo ao portainer,que o faz automaticamente. Uma outra opção para utilizar volumes será, seguindo a configuração atual da dockerfile existente, recorrer à flag -v, ao correr o container:
 
 		$docker run --rm -v pgdata:/var/lib/postgresql/9.3/main -P --name pg_test eg_postgresql
 
-		Tenho a teoria mas estou a ter um erro idk where need to ask professor
+		
 
 
 
@@ -329,6 +331,8 @@
 		sudo chmod +x /usr/local/bin/docker-compose
 		Verificar se foi instalado:
 		docker-compose --version
+
+		O exercicio foi feito na diretoria composetest
 
 		Começar o docker compose-> docker-compose up
 		Começar aplicação em detached mode-> docker-compose up -d
@@ -355,7 +359,8 @@
 				e com isto não precisamos de mandar a aplicação abaixo para estar a trabalhar nela
 
 ## LAB1_5
-	Não sei se percebi bem o exercicio
+	Neste exercicio é pedido para agarrar no exercicio 2 e tranforma-lo em 2 projetos separados
+	
 
 ## Reniew questions
 
@@ -368,8 +373,9 @@
 			verify -Corre os unit tests, para garantir que os critérios de qualidade estão todos
 			install - instala o package no repositorio local 
 			deploy - Feito no ambiente de construção , copia o package final para o repositório remoto para ser possivel partilha-lo 
-	B) DUVIDA
+	B) 
 		Sim, o maven pode ser util para correr o nosso projeto , como utilizamos na pergunta 1.2 para o correr ou em   uma aplicação web e pode fazer muitas outras tarefas através de plug-ins
+		O Maven pode ativar diferentes plug-ins, incluindo plug-ins para executar uma classe específica
 
 
 	C)
