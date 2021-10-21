@@ -160,7 +160,7 @@
 		INFO: Temperatura máxima em Aveiro é de : 25.9
 
 
-		 mvn exec:java -Dexec.mainClass="com.MyWeatherRadar.WeatherStarter" -Dexec.args="Viseu Aveiro China Santarém" 
+		 mvn exec:java -Dexec.mainClass="com.MyWeatherRadar.WeatherStarter" -Dexec.args="Viseu Aveiro China Santarém"  -Dexec.cleanupDaemonThreads=false 
 		out 14, 2021 6:43:32 DA TARDE com.MyWeatherRadar.WeatherStarter main
 		INFO: Temperatura máxima em Viseu é de : 23.2
 		out 14, 2021 6:43:32 DA TARDE com.MyWeatherRadar.WeatherStarter main
@@ -360,8 +360,21 @@
 
 ## LAB1_5
 	Neste exercicio é pedido para agarrar no exercicio 2 e tranforma-lo em 2 projetos separados
+	A parte da API vai ficar no projeto api e a parte da interação do user fica no projeto main
+	Para ligar os projetos basta:
+		mvn package no projeto api  e com isto vou obter o jar
+		Ir ao projeto main e no pom adicionar 
+		<dependency>
+		<groupId>com.api.app</groupId>
+		<artifactId>api</artifactId>
+		<version>1.0</version>
+		
+		</dependency>
 	
-
+	mvn install:install-file -Dfile="/home/alexandre/ies/IES_97505/lab1/lab1_5/subCla/target/subCla-1.0-SNAPSHOT.jar" -DgroupId="com.subCla.app" -DartifactId="subCla" -Dversion="1.0-SNAPSHOT" -Dpackaging=jar
+	mvn package
+	exec:java -Dexec.mainClass="com.user.app.App" -Dexec.args="Viseu Aveiro China Santarém"  -Dexec.cleanupDaemonThreads=false 
+	E já está a funcionar
 ## Reniew questions
 
 	A)
