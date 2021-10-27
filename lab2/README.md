@@ -22,8 +22,9 @@ a)
 Para ir para o servidor apache basta cd /apache-tomcat-9.0.54/bin
 e para correr basta dar as permissoes chmod 775 ao catalina.sh e ao startup.sh
 e correr o ./startup.sh
-
 e fica http://localhost:8080/
+
+Para parar de correr basta fazer ./catalina.sh stop 
 b)
     O ambiente de manager , que pode ser usada para controlo do server e inclui implementação e desinstalação de aplicações desenvolvidas
     http://localhost:8080/manager
@@ -67,5 +68,20 @@ g)
     Logo é necessário ligar a extensão para nao ter que estar sempre a dar install 
     A solução é usar o  IDE integrated deployment support. 
 
+    Contudo neste estou a ter alguns problemas mesmo tentando isto, https://code.visualstudio.com/docs/java/java-tomcat-jetty
+
 h)
     mvn archetype:generate -DgroupId=com.tomcat_21.app -DartifactId=tomcat_webapp -DarchetypeArtifactId=webapp-javaee7 -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeVersion=1.1 -DinteractiveMode=false
+    Correndo a aplicação no tomcat na aplicação vamos para este link: http://localhost:8080/tomcat_webapp-1.0-SNAPSHOT/
+        Onde é impresso na aplicação web "Hello world!"
+    Adicionando ao url firstApp/ estamos a aplicar a App.java com o url que la colocamos e assim vai passar a aparecer na aplicação web:
+        "Olá anónimo , bem vindo a este mundo
+        Daqui para a frente já vai ser mais complexo mas vais conseguir"
+    Se ao link anterior já com o firstApp adicionarmos "?username = <nome>" vamos ter um display na aplicação diferente para cada nome que é dado, neste caso se dermos ao username o nome "serras" passando a ter o link abaixo
+    http://localhost:8080/tomcat_webapp-1.0-SNAPSHOT/firstApp?username=serras passando este username é apresentado na aplicação a seguinte frase :
+                "Olá serras, bem vindo a este mundo
+        Daqui para a frente já vai ser mais complexo mas vais conseguir"
+
+i) DUVIDA NESTE, perguntar ao stor na proxima aula
+    Acho que neste já estou a tratar desta exceção no exercicio anterior, visto que tenho um caso que trata quando o user é null, caso não tivesse isto, acredito que seja aqui que o erro do NullPointerException iria ocorrer
+    Mas vou tirar para forçar o erro para ver o que acontece, aparentemente não acontece nada logo idk

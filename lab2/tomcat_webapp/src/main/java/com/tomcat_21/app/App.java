@@ -2,9 +2,7 @@ package com.tomcat_21.app;
  
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+
  
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,8 +20,8 @@ public class App extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException 
     {
          
-        Map<String,String> data = getData();
-         
+        String username = request.getParameter("username");      
+        
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
@@ -33,8 +31,17 @@ public class App extends HttpServlet {
             out.println("<title>FirstApp</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h2>Hello " + data.get("username") + ", " + data.get("message") + "</h2>");
-            out.println("<h2>The time right now is : " + new Date() + "</h2>");
+         
+            
+            if (username != null){
+                out.println("<h2>Olá " + username + ", " +" bem vindo a este mundo"+ "</h2>");
+            }
+           
+            else{
+                out.println("<h2>Olá anónimo " +", " + "bem vindo a este mundo" + "</h2>");
+            }
+            
+            out.println("<h2>Daqui para a frente já vai ser mais complexo mas vais conseguir</h2>");
             out.println("</body>");
             out.println("</html>");
         } finally {
@@ -42,12 +49,5 @@ public class App extends HttpServlet {
         }
     }
      
-    //This method will access some external system as database to get user name, and his personalized message
-    private Map<String, String> getData() 
-    {
-        Map<String, String> data = new HashMap<String, String>();
-        data.put("username", "Guest");
-        data.put("message",  "Welcome to my world !!");
-        return data;
-    }
+
 }
