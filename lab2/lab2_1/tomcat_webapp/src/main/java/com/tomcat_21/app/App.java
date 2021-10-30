@@ -24,30 +24,41 @@ public class App extends HttpServlet {
         
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try {
+
+        // gerar a exceção para ver o que acontece
+        /*
+        Object obj = null;
+        obj.toString();
+        */
+        if(username == null){
+            throw new NullPointerException("Tem que indicar um username para esta página funcionar!");
+        }
+        else{
+            try{
             // Write some content
             out.println("<html>");
             out.println("<head>");
             out.println("<title>FirstApp</title>");
             out.println("</head>");
             out.println("<body>");
-         
             
-            if (username != null){
-                out.println("<h2>Olá " + username + ", " +" bem vindo a este mundo"+ "</h2>");
-            }
+                if (username.equals("Alexandre")){
+                    out.println("<h2>Olá " + username + ", " +"tu já sabes o que vais passar "+ "</h2>");
+                }
+                    else {
+                    out.println("<h2>Olá " + username + ", " +" bem vindo a este mundo"+ "</h2>");
+                }  
+                
+            
            
-            else{
-                out.println("<h2>Olá anónimo " +", " + "bem vindo a este mundo" + "</h2>");
-            }
             
-            out.println("<h2>Daqui para a frente já vai ser mais complexo mas vais conseguir</h2>");
+            out.println("<h2>Daqui para a frente  vai ser mais complexo mas vais conseguir</h2>");
             out.println("</body>");
             out.println("</html>");
         } finally {
             out.close();
         }
     }
+    }
      
-
 }
