@@ -207,6 +207,8 @@ Exercício 3)
                     @ComponentScan: Tells Spring to look for other components, configurations, and services in the com/example package, letting it find the controllers.
 
         SpringApplication.run() method to launch an application. 
+        Correr:
+            ./mvnw spring-boot:run
 
         http://localhost:9000/greeting -> retorn Hello,World
         http://localhost:9000/greeting?name=Alex -> retorna Hello, Alex!
@@ -222,5 +224,66 @@ Exercício 3)
 
         https://code.visualstudio.com/docs/java/java-spring-boot -> link para integrar com o vsCode
 
-    C)
+    ALinea C Perguntar o que é preciso mais)
+        Result Json:
+            Para construir aplicações Restful vamos utilizar agora um @RestController, este é um caso especial do @Controller e retorna uma resposta restuful , logo é necessario utilizar tambem um @ResponseBody
+
+            Quando temos respostas vamos ter posts, logo precisamos de utilizar um @RequestBody
+
+            O valor de retorno da função passa de uma View , passa a ser um objeto que criamos que vai ser convertido em uma resposta JSON
+
+
+            Jackson Json- > É basicamente a melhor libraria de Json parsen para o Java
+            https://spring.io/guides/gs/rest-service/
+            Correr:
+                ./mvnw spring-boot:run
+
+
+            Resultados:
+                http://localhost:9000/greeting2->{"id":1,"content":"Hello, World!"}
+                http://localhost:9000/greeting2?name=Alex ->  {"id":2,"content":"Hello, Alex!"}
+                http://localhost:9000/greeting2?name=serras->{"id":3,"content":"Hello, serras!"}
+
+                O id vai sendo um counter 
+
+
+        Testar a aplicação Rest com curl -> https://www.baeldung.com/curl-rest
+
+            o out.json foi criado pelo comando : curl -o out.json  http://localhost:9000/greeting2
+
+        Com o curl -v  http://localhost:9000/greeting2 -> eu faço um get de varia informação  da pagina
+
+
+Exercicio 4
+
+
+
+Perguntas Finais:
+    A-> 
+        Um Servlet Container é responsável por gerir o ciclo de vida de servlets, mapear um URL para um servlet particular e garantir que quem pede o  URL possio os direitos de acesso desse URL.
+        Um Servlet Container implementa o contrato de componente web da arquitetura Java EE, especificando um ambiente de tempo de execução para componentes web que inclui segurança, concorrência, gerenciamento de ciclo de vida, transação, implantação e outros serviços. 
+        Um Container web lida com solicitações para servlets, ficheiros Jakarta Server Pages (JSP) e outros tipos de ficheiros que incluem código do lado do servidor. O container  Web cria instâncias de servlet, carrega e descarrega servlets, cria e gere objetos de solicitação e resposta e executa outras tarefas para gerir  servlet's.
+    B-> 
         
+        A estrutura do Spring Web model-view-controller (MVC) é projetada em torno de um DispatcherServlet que passa as solicitações para manipular, com mapeamentos de manipuladores configuráveis, resolução de visualização, local e resolução de temas, bem como suporte para upload de ficheiros. O manipulador padrão é baseado nas anotações @Controller e @RequestMapping, que oferece uma ampla variedade de métodos de manipulação flexíveis. Com a introdução do Spring 3.0, o mecanismo @Controller também permite criar sites e aplicações RESTful, por meio da anotação @PathVariable e outros recursos.
+        Que foi aquilo que fiz no exercício do greeting onde era possivel através da alteração do campo name, alterar o display da aplicação Web,  tornando a aplicação Web flexível
+    C-> 
+        Os starters permitem nos adicionar jars ao classpath e com isto podemos fazer um desenvolvimento muito mais rapido e fácil,  starters são os descritores de dependências  
+    D-> 
+        @Configuration
+        @EnableAutoConfiguration
+        @ComponentScan
+        Nas linhas 202 deste mesmo notebook estão a explicação do que é cada 1 deles.
+
+    E-> 
+        Handle errors gracefully and return standard error codes -> Quando existe algum erro na API, não devemos de enviar o erro diretamente ao utilizador por questões de segurança, ou para não o confudir com o que é aquele erro, por isso, nos devemos tratar do erro e enviar para o utilizador o erro , em formato HTTP response e assim o mesmo consegue saber que tipo de erro ocorreu.
+
+        Accept and respond with JSON -> Estas aplicações devem aceitar pedidos Json e fazer as respostas também em json, visto que json é o tipo standart para transferir dados e quase todas as tecnologias web são compatíveis com este tipo de dados, logo não faz sentido criar uma API que não va ser compativel com as tecnologias, ou seja, o JSON deve ser quase algo "obrigatório" no que toca aos pedidos e respostas.
+
+        Use logical nesting on endpoints  ->  Quando projetamos  endpoints, faz sentido agrupar aqueles que contêm informações associadas,isto é, se um objeto contêm outro , devemos aproveitar esse fator para no / refletir isso 
+
+        Defining API operations in terms of HTTP methods ->  Como é uma aplicação web, devemos ter sempre em consideração o protocolo utilizado na web, posto isto, devemos fazer a nossa aplicação web de forma a ser compativel com a semântica do HTTP
+
+        Documentation -> O facto de a nossa API estar documentada facilita bastante o trabalho do consumidor que precise de a utilizar, visto que ao ler a documentação vai conseguir saber as funcionalidades da API e como é que utiliza essas mesmas funcionalidades. Visto que nunca sabemos quem vai ler a documentação, a mesma deve ser o mais simples e clara possivel.
+        Este documento deve ter exemplos completos dos ciclos de request e response.
+
