@@ -270,7 +270,6 @@ Exercicio 4
         http://localhost:9000/api/quotes ou http://localhost:9000/api/quotes?show=3 , quando o parâmetro show não é passado por default assume-se que é o show/filme com o id 1 que está a ser utilizado. Utiliza a função public QuotesFi randomQuote(@RequestParam(value = "show", defaultValue = "1") String name) com o auxilio de   ArrayList<Film> addFilmess().
         E os outputs são algo semelhantes ao seguinte : {"quote":"A jornada de mil quilômetros começa com o primeiro passo.","nome":"Rei Leão"}.
 
-        
 Perguntas Finais:
 
     A-> 
