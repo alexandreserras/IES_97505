@@ -224,7 +224,7 @@ Exercício 3)
 
         https://code.visualstudio.com/docs/java/java-spring-boot -> link para integrar com o vsCode
 
-    ALinea C Perguntar o que é preciso mais)
+    ALinea C 
         Result Json:
             Para construir aplicações Restful vamos utilizar agora um @RestController, este é um caso especial do @Controller e retorna uma resposta restuful , logo é necessario utilizar tambem um @ResponseBody
 
@@ -255,10 +255,28 @@ Exercício 3)
 
 
 Exercicio 4
+    Vou usar o projeto feito no exercicio 3c como base para começar a implementação
+    Não estou a conseguir correr a API que temos como exemplo no passo numero 6  ->https://github.com/F4R4N/movie-quote/
+
+        -> Correr ./mvnw spring-boot:run  e abrir o browser em http://localhost:9000/
+
+    Estrutura da API:
+        A página index.html -> é a página que aparece quando corremos, nesta página encontra-se 3 links, um link por cada um dos métodos GET que são necessários implementar.
+
+        http://localhost:9000/api/quote -> É a página responsavel por enviar random Quotes, onde ao abrir o link é nos devolvidos uma random quote de qualquer filme ou show que temos na base de dados. Exemplo : {"quote":"O rei , Alex , o leão"}, a implementação está feita na classe GreetingController , utiliza a função public Quotes randomQuote() e esta utiliza a função public ArrayList<String> retQuotes()
+
+        http://localhost:9000/api/shows -> É a página que mostra todos os shows que estão disponiveis na sua base de dados e qual o seu id , exemplo : [{"id":4,"nome":"Malucos do riso"},{"id":5,"nome":"Marvel"}], a  implementação desta é feita na mesma classe que a anterior em public ArrayList<ShortFilm> allShows() e esta função tem o auxilio de private ArrayList<Film> addFilmess().
+
+        http://localhost:9000/api/quotes ou http://localhost:9000/api/quotes?show=3 , quando o parâmetro show não é passado por default assume-se que é o show/filme com o id 1 que está a ser utilizado. Utiliza a função public QuotesFi randomQuote(@RequestParam(value = "show", defaultValue = "1") String name) com o auxilio de   ArrayList<Film> addFilmess().
+        E os outputs são algo semelhantes ao seguinte : {"quote":"A jornada de mil quilômetros começa com o primeiro passo.","nome":"Rei Leão"}.
+
+        
+
 
 
 
 Perguntas Finais:
+
     A-> 
         Um Servlet Container é responsável por gerir o ciclo de vida de servlets, mapear um URL para um servlet particular e garantir que quem pede o  URL possio os direitos de acesso desse URL.
         Um Servlet Container implementa o contrato de componente web da arquitetura Java EE, especificando um ambiente de tempo de execução para componentes web que inclui segurança, concorrência, gerenciamento de ciclo de vida, transação, implantação e outros serviços. 
