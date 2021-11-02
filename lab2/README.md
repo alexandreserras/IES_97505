@@ -271,10 +271,6 @@ Exercicio 4
         E os outputs são algo semelhantes ao seguinte : {"quote":"A jornada de mil quilômetros começa com o primeiro passo.","nome":"Rei Leão"}.
 
         
-
-
-
-
 Perguntas Finais:
 
     A-> 
