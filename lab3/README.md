@@ -144,6 +144,34 @@ Java Persistence API (ou simplesmente JPA) é uma API padrão da linguagem Java 
     https://vladmihalcea.com/manytoone-jpa-hibernate/
     https://www.baeldung.com/hibernate-one-to-many
 
+    docker run --name mysql5 -e MYSQL_ROOT_PASSWORD=secret1 -e MYSQL_DATABASE=demo -e MYSQL_USER=demo -e MYSQL_PASSWORD=secret2 -p 3000:3306 -d mysql/mysql-server:5.7
+
+    Precisei de criar 2 entidades e com isto criei 2 serviço , 2 repositórios e 1 controller 
+
+    Problemas principais foi erros com as foreign keys que me ia tendo.
+    Depois de ter tudo conectado corretamente entre as 2 entidades torna-se relativamente simples, fazer o resto que era apenas passar os dados de um lado para o outro.
+    Os inserts na base de dados vi-los através de metodos posts disponvieis no controller e é possivel fazer com o postman , que torna bastante mais pratico.
+
+    http://localhost:8080/shows
+    http://localhost:8080/quote
+    http://localhost:8080/quotes?show=4
+
+    
+    Docker )
+        Como o docker estava-me a dar muitos erros, decidi fazer uma pasta nova, onde coloquei ex3_with_docker e foi lá que fiz a implementação do exercicio com docker
+        
+        Criei os 2 ficheiros dockerfile e o docker-compose up 
+
+        Correr:
+              ./mvnw install -DskipTests
+              docker-compose up
+            
+            Contudo tenho algo mal na ligação para com a db
+            
+
+
+    
+
 # QUESTÕES
 
     a)
@@ -154,7 +182,7 @@ Java Persistence API (ou simplesmente JPA) é uma API padrão da linguagem Java 
 
 
     b)
-
+        A imagem está em anexo nesta diretoria com o nome perguntas_b
     c)
         @Id ->Serve para especificar a chave primária de uma entidade
         @Column ->É uma anotação opcional que permite personalizar o mapeamento entre o atributo da entidade e a coluna da base de dados
